@@ -19,17 +19,17 @@ let snare = note("c3 _ _ _ c3  _ _ c3 _ c3 _ _ c3 _ _ _ _ _ _ _ c3 _ _ c3 _ c3 _
 let bass2 = note("f1 f1 f1 f1 a#1 a#1 a#1 a#1 g#1 g#1 g#1 g#1 c#2 c#2 c#2 c#2").s("gm_electric_bass_pick")
 let kick2 = note("c3 c3 _ _ c3 c3 _ _ c3 c3 _ _ c3 c3 _ _").s("bd")
 let snare2 = note("c8 _ c3 _ _ _ c3 _ _ _ c3 _ _ _ c3 _").s("bossdr110_sd")
+let electric_lead2 = note("~@0.2 [~@0.2 <f4>@2, <c4>]").s("gm_acoustic_guitar_nylon")
 
 // that drum intro this is where i lied the most
 let hi_hat3 = note("c8 _ _ c _ _ _ c _ _ _ c _ _ _ c _").s("hh")
-let snare3 = note("c _ _ _ c _ _ _ c _ _ _ c _ _ _").s("bossdr110_sd")
-let kick3 = note("c8 c _ c _ c _ c _ c _ c _ c _ c").s("bd")
-
+let snare3 = note("c _ _ _ c _ _ _ c _ _ _ c _ _ _").s("bossdr110_sd").gain(2)
+let kick3 = note("~ c c _ _ c c _ _ c c _ _ c c _").s("bd")
 
 
 arrange(
 	[2, lead],
 	[0.5, stack(kick3, snare3, hi_hat3).cpm(112 / 4)],
 	[2, stack(lead, kick, crash, snare, kickdelay, bass, electric_lead)],
-	[2, stack(bass2, kick2, snare2)]
-)
+	[2, stack(bass2, kick2, snare2, electric_lead2)]
+)._pianoroll()
